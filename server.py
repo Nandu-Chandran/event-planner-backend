@@ -1,16 +1,16 @@
 from flask import Flask
-from pymongo import Mongoclient
+from pymongo import MongoClient
 
-client = Mongoclient('localhost','27017')
+client = MongoClient('localhost','27017')
 db=client['EventPlanner']
 
-user_collection=client['UserDB']
-event_collection=client['EventDB']
+user_collection=db['users']
+event_collection=db['events']
 
 
 app= Flask(__name__)
 
-@app.route('/')
+@app.route('/events',methods=['GET'])
 def home():
     return("This is home")
 

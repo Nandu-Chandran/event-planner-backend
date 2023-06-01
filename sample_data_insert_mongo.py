@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 
-client = MongoClient('localhost','27017')
+client = MongoClient('localhost',27017)
 db = client['EventPlanner']
 event_collection= db['events']
 user_collection=db['users']
@@ -12,11 +12,6 @@ users = [
     {'id': 3, 'name': 'Bob'},
     {'id': 4, 'name': 'Emily'},
     {'id': 5, 'name': 'David'},
-    {'id': 6, 'name': 'Sophia'},
-    {'id': 7, 'name': 'Michael'},
-    {'id': 8, 'name': 'Olivia'},
-    {'id': 9, 'name': 'Jacob'},
-    {'id': 10, 'name': 'Emma'}
 ]
 posts= [
     {'id': 1, 'post_title': 'First Post', 'post_date': '2023-05-30', 'post_summary': 'This is the summary of the first post.'},
@@ -28,13 +23,15 @@ posts= [
 def insert_user():
     if user_collection.count_documents({}) == 0:
         user_collection.insert_many(users)
+        print("tmp users inserted")
     else:
-        print("Data not inserted")
+        print("users not inserted")
 def insert_post():
     if event_collection.count_documents({}) == 0:
-        event_collection.insert_many(users)
+        event_collection.insert_many(posts)
+        print("tmp posts inserted")
     else:
-        print("Data not inserted)
+        print("posts not inserted")
 
 insert_user()
 insert_post()
