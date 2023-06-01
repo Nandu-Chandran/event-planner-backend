@@ -19,5 +19,17 @@ def get_events():
     print(events)
     return jsonify(events)
 
+@app.route('/sign-up', method=['GET'])
+def sign_up():
+    pass
+
+@app.route('/login', method=['GET'])
+def login():
+    pass
+
+@app.route('/login', method=['GET'])
+def logout():
+    pass
+
 if __name__ == "__main__":
     app.run(debug = True, host = "0.0.0.0", port = 8000)
